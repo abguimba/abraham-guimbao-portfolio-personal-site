@@ -338,6 +338,15 @@ export default function Home() {
   return (
     <div className='flex min-h-screen flex-col bg-background text-foreground'>
       <MeteorRain isDark={isDark} />
+      {/* Made with AI Badge - Top of site */}
+      <header className='bg-background py-2 sm:py-2'>
+        <div className='flex justify-center px-4'>
+          <div className='flex items-center gap-1 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 shadow-sm dark:border-blue-400/30 dark:bg-blue-400/10 dark:text-blue-400'>
+            <span className='text-xs'>🤖</span>
+            Made with AI
+          </div>
+        </div>
+      </header>
       <main className='relative z-10 flex-1'>
         <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
         {/* Hero Section */}
@@ -462,15 +471,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      {/* Made with AI Badge - Bottom of site, no divider */}
-      <footer className='mt-auto bg-background py-3 sm:py-4'>
-        <div className='flex justify-center px-4'>
-          <div className='flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 text-xs font-medium text-blue-600 shadow-sm dark:border-blue-400/30 dark:bg-blue-400/10 dark:text-blue-400 sm:px-4 sm:py-2 sm:text-sm'>
-            <span>🤖</span>
-            Made with AI
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
