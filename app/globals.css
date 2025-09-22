@@ -33,7 +33,7 @@
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 95%;
-    --primary: 210 100% 65%;
+    --primary: 270 91% 65%;
     --primary-foreground: 0 0% 5%;
     --secondary: 0 0% 0%;
     --secondary-foreground: 0 0% 95%;
@@ -45,7 +45,7 @@
     --destructive-foreground: 0 0% 95%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 210 100% 65%;
+    --ring: 270 91% 65%;
   }
 }
 
@@ -103,33 +103,37 @@
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(to right, #fbbf24, #f59e0b);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #fbbf24; /* Fallback color for better browser support */
+    background: linear-gradient(to right, #fbbf24, #f59e0b) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #fbbf24 !important; /* Fallback color for better browser support */
   }
 
   .dark .text-gradient {
-    background: linear-gradient(to right, #1e90ff, #4169e1);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #1e90ff; /* Fallback color for better browser support */
+    background: linear-gradient(to right, #c084fc, #a855f7) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #c084fc !important; /* Fallback color for better browser support */
   }
 
   /* Fallback for browsers that don't support background-clip: text */
   @supports not (background-clip: text) {
     .text-gradient {
-      color: #fbbf24;
+      color: #fbbf24 !important;
     }
     .dark .text-gradient {
-      color: #1e90ff;
+      color: #c084fc !important;
     }
   }
 
   .glow {
-    box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+  }
+
+  .dark .glow {
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
   }
 
   .cinematic-glow {
@@ -158,8 +162,8 @@
   .dark .cinematic-glow::before {
     background: radial-gradient(
       ellipse,
-      rgba(30, 144, 255, 0.3) 0%,
-      rgba(65, 105, 225, 0.18) 40%,
+      rgba(192, 132, 252, 0.3) 0%,
+      rgba(168, 85, 247, 0.18) 40%,
       transparent 70%
     );
   }
@@ -234,20 +238,20 @@
   /* Mobile-specific optimizations */
   @media (max-width: 640px) {
     .text-gradient {
-      background: linear-gradient(to right, #fbbf24, #f59e0b);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background: linear-gradient(to right, #fbbf24, #f59e0b) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
       /* Fallback for better mobile support */
-      color: #fbbf24;
+      color: #fbbf24 !important;
     }
 
     .dark .text-gradient {
-      background: linear-gradient(to right, #1e90ff, #4169e1);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: #1e90ff;
+      background: linear-gradient(to right, #c084fc, #a855f7) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: #c084fc !important;
     }
 
     /* Smaller badges on mobile */

@@ -89,7 +89,7 @@ function ThemeToggle({
     <button
       type='button'
       onClick={onToggle}
-      className='fixed right-4 top-4 z-[9999] flex h-10 w-10 items-center justify-center rounded-lg border border-yellow-600/40 bg-card shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl dark:border-blue-400/40 sm:right-6 sm:top-6 sm:h-12 sm:w-12'
+      className='fixed right-4 top-4 z-[9999] flex h-10 w-10 items-center justify-center rounded-lg border border-yellow-600/40 bg-card shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl dark:border-purple-400/40 sm:right-6 sm:top-6 sm:h-12 sm:w-12'
       aria-label='Toggle theme'
     >
       <div className='relative h-5 w-5 sm:h-6 sm:w-6'>
@@ -101,7 +101,7 @@ function ThemeToggle({
           }`}
         />
         <Moon
-          className={`absolute inset-0 h-5 w-5 text-blue-400 transition-all duration-300 sm:h-6 sm:w-6 ${
+          className={`absolute inset-0 h-5 w-5 text-purple-400 transition-all duration-300 sm:h-6 sm:w-6 ${
             isDark
               ? 'rotate-0 scale-100 opacity-100'
               : '-rotate-90 scale-0 opacity-0'
@@ -151,9 +151,9 @@ function MeteorRain({ isDark }: { isDark: boolean }) {
     };
   }, [isDark]);
 
-  // Use proper highlight colors: yellow for light, blue for dark
-  const meteorColor = isDark ? '#1e90ff' : '#fbbf24';
-  const meteorGlow = isDark ? '#1e90ff' : '#fbbf24';
+  // Use proper highlight colors: yellow for light, purple for dark
+  const meteorColor = isDark ? '#c084fc' : '#fbbf24';
+  const meteorGlow = isDark ? '#c084fc' : '#fbbf24';
 
   return (
     <div className='pointer-events-none fixed inset-0 z-0 overflow-hidden bg-transparent'>
@@ -192,7 +192,7 @@ function SkillsList() {
       {skills.map((skill) => (
         <span
           key={skill}
-          className='inline-block cursor-default whitespace-nowrap rounded-full border border-yellow-600/40 bg-yellow-600/20 px-2 py-1 text-xs font-medium text-yellow-800 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-300 sm:px-3 sm:py-1.5 sm:text-sm'
+          className='inline-block cursor-default whitespace-nowrap rounded-full border border-yellow-600/40 bg-yellow-600/20 px-2 py-1 text-xs font-medium text-yellow-800 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md dark:border-purple-500/30 dark:bg-purple-500/10 dark:text-purple-300 sm:px-3 sm:py-1.5 sm:text-sm'
         >
           {skill}
         </span>
@@ -288,7 +288,7 @@ function SingleRoleDisplay() {
           {/* Role name container - responsive width */}
           <div className='relative flex h-[1.4em] w-[12ch] items-center justify-end overflow-hidden sm:w-[12ch]'>
             <div
-              className={`whitespace-nowrap font-medium text-yellow-600 dark:text-blue-400 ${animationClass}`}
+              className={`whitespace-nowrap font-medium text-yellow-600 dark:text-purple-400 ${animationClass}`}
             >
               {roleSpecialization}
             </div>
@@ -297,7 +297,7 @@ function SingleRoleDisplay() {
           <span className='ml-1 font-medium text-muted-foreground sm:ml-2'>
             Engineer
             <span
-              className={`animate-cursor-flicker text-yellow-600 transition-opacity dark:text-blue-400 ${cursorVisible ? 'opacity-100 duration-200' : 'opacity-0 duration-1000'}`}
+              className={`animate-cursor-flicker text-yellow-600 transition-opacity dark:text-purple-400 ${cursorVisible ? 'opacity-100 duration-200' : 'opacity-0 duration-1000'}`}
             >
               _&nbsp;&nbsp;&nbsp;
             </span>
@@ -375,10 +375,10 @@ export default function Home() {
                         <Link
                           key={link.name}
                           href={link.href}
-                          className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
+                          className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all duration-200 hover:-translate-y-1 hover:scale-125 hover:bg-accent dark:hover:shadow-lg sm:h-10 sm:w-10'
                           title={link.name}
                         >
-                          <Icon className='h-4 w-4 text-yellow-600 dark:text-blue-400 sm:h-5 sm:w-5' />
+                          <Icon className='h-4 w-4 text-yellow-600 dark:text-purple-400 sm:h-5 sm:w-5' />
                         </Link>
                       );
                     }
@@ -391,10 +391,10 @@ export default function Home() {
                           onClick={() => {
                             setShowCalendarModal(true);
                           }}
-                          className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
+                          className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all duration-200 hover:-translate-y-1 hover:scale-125 hover:bg-accent dark:hover:shadow-lg sm:h-10 sm:w-10'
                           title={link.name}
                         >
-                          <Icon className='h-4 w-4 text-yellow-600 dark:text-blue-400 sm:h-5 sm:w-5' />
+                          <Icon className='h-4 w-4 text-yellow-600 dark:text-purple-400 sm:h-5 sm:w-5' />
                         </button>
                       );
                     }
@@ -405,10 +405,10 @@ export default function Home() {
                         href={link.href}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
+                        className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all duration-200 hover:-translate-y-1 hover:scale-125 hover:bg-accent dark:hover:shadow-lg sm:h-10 sm:w-10'
                         title={link.name}
                       >
-                        <Icon className='h-4 w-4 text-yellow-600 dark:text-blue-400 sm:h-5 sm:w-5' />
+                        <Icon className='h-4 w-4 text-yellow-600 dark:text-purple-400 sm:h-5 sm:w-5' />
                       </a>
                     );
                   })}
@@ -444,30 +444,30 @@ export default function Home() {
 
               <div className='mb-8 flex justify-center px-2 sm:mb-8 sm:px-0'>
                 <p className='max-w-2xl text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg'>
-                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
+                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     Curious
                   </span>
                   ,{' '}
-                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
+                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     hard-working
                   </span>
                   , and{' '}
-                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
+                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     proactive
                   </span>{' '}
                   individual with a diverse skill set.
                   <br className='hidden sm:block' />
                   <span className='sm:hidden'> </span>Passionate about building
                   robust{' '}
-                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
+                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     infrastructures
                   </span>
                   ,{' '}
-                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
+                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     automations
                   </span>{' '}
                   and{' '}
-                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
+                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     complex systems
                   </span>
                   .
@@ -481,7 +481,7 @@ export default function Home() {
                       href='https://42.fr'
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-blue-400 underline decoration-dotted underline-offset-4 transition-colors hover:text-blue-300'
+                      className='text-yellow-600 underline decoration-dotted underline-offset-4 transition-colors hover:text-yellow-500 dark:text-purple-400 dark:hover:text-purple-300'
                     >
                       42 Paris
                     </a>{' '}
