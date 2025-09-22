@@ -49,8 +49,12 @@ export default function RootLayout({
         className={`${GeistSans.className} ${inter.variable} bg-background text-foreground`}
       >
         {children}
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

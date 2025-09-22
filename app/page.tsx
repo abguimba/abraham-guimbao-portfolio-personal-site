@@ -462,7 +462,7 @@ export default function Home() {
 
               <SingleRoleDisplay />
 
-              <div className='mb-2 flex justify-center px-2 sm:mb-4 sm:px-0'>
+              <div className='mb-6 flex justify-center px-2 sm:mb-0 sm:px-0'>
                 <p className='max-w-4xl text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg'>
                   <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     Curious
