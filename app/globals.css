@@ -68,6 +68,7 @@
     padding: 0;
     width: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   body {
@@ -82,9 +83,11 @@
       -apple-system,
       sans-serif;
     font-variant-numeric: lining-nums;
+    height: 100%;
   }
   html {
     @apply bg-background;
+    height: 100%;
   }
 
   /* Force darker grey background in dark mode */
@@ -219,14 +222,6 @@
     animation: slideDown 0.8s ease-in-out;
   }
 
-  .animate-role-exit {
-    animation: roleExit 0.3s ease-in-out forwards;
-  }
-
-  .animate-role-enter {
-    animation: roleEnter 0.6s ease-in-out forwards;
-  }
-
   .animate-meteor {
     animation: meteor 3s linear forwards;
   }
@@ -256,25 +251,25 @@
 
     /* Smaller badges on mobile */
     .badge-mobile-small {
-      font-size: 10px !important;
-      padding: 2px 6px !important;
-      gap: 3px !important;
+      font-size: 12px !important;
+      padding: 4px 8px !important;
+      gap: 5px !important;
     }
 
     .badge-mobile-small svg {
-      width: 8px !important;
-      height: 8px !important;
+      width: 10px !important;
+      height: 10px !important;
     }
 
     /* Smaller social icon badges on mobile */
     .social-badge-mobile {
-      width: 28px !important;
-      height: 28px !important;
+      width: 30px !important;
+      height: 30px !important;
     }
 
     .social-badge-mobile svg {
-      width: 14px !important;
-      height: 14px !important;
+      width: 16px !important;
+      height: 16px !important;
     }
   }
 }

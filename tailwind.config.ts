@@ -70,8 +70,8 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       animation: {
-        'role-exit': 'roleExit 0.25s ease-in forwards',
-        'role-enter': 'roleEnter 0.5s ease-out forwards',
+        'role-exit': 'roleExit 0.25s ease-in-out forwards',
+        'role-enter': 'roleEnter 0.5s ease-in-out forwards',
         'cursor-flicker': 'cursor-flicker 2s infinite',
       },
       keyframes: {

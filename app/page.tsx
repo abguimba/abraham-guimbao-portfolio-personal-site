@@ -71,11 +71,11 @@ const skills = [
   'Back-end',
   'Automation',
   'Networking',
-  'Web3/Blockchain',
+  'Web3',
   'Cybersecurity',
   'AI',
   'OSS',
-  'Video Game Development',
+  'GameDev',
 ];
 
 function ThemeToggle({
@@ -188,7 +188,7 @@ function MeteorRain({ isDark }: { isDark: boolean }) {
 
 function SkillsList() {
   return (
-    <div className='mx-auto flex max-w-7xl flex-wrap justify-center gap-1.5 px-4 sm:gap-3'>
+    <div className='mx-auto flex max-w-none flex-wrap justify-center gap-1.5 px-4 sm:gap-3'>
       {skills.map((skill) => (
         <span
           key={skill}
@@ -259,13 +259,14 @@ function SingleRoleDisplay() {
     // Start the first animation cycle immediately after initial mount delay
     const initialTimeout = setTimeout(() => {
       startAnimationCycle();
-    }, 1000); // Wait 1 second after mount before first animation
 
-    // Start regular interval that will trigger the second animation at the right time
-    // This ensures consistent timing between all cycles
-    intervalRef.current = setInterval(() => {
-      startAnimationCycle();
-    }, 2500);
+      // Start regular interval AFTER the first animation starts
+      // This ensures consistent timing between all cycles
+      // Total cycle: 1350ms animation + 650ms pause = 2000ms total
+      intervalRef.current = setInterval(() => {
+        startAnimationCycle();
+      }, 2000);
+    }, 1000); // Wait 1 second after mount before first animation
 
     return () => {
       clearTimeout(initialTimeout);
@@ -360,9 +361,9 @@ export default function Home() {
       <main className='relative z-10 w-full flex-1'>
         <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
         {/* Hero Section */}
-        <section className='relative flex min-h-[calc(100vh-12rem)] items-center overflow-hidden sm:min-h-[calc(100vh-8rem)]'>
+        <section className='relative flex min-h-screen items-center overflow-hidden'>
           <div className='absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent dark:from-purple-500/5' />
-          <div className='relative mx-auto w-full max-w-4xl px-4 py-6 sm:px-6 sm:py-8'>
+          <div className='relative mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8'>
             <div className='fade-in text-center'>
               <div className='mb-6 sm:mb-8'>
                 <div className='flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4'>
@@ -443,7 +444,7 @@ export default function Home() {
               <SingleRoleDisplay />
 
               <div className='mb-8 flex justify-center px-2 sm:mb-8 sm:px-0'>
-                <p className='max-w-2xl text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg'>
+                <p className='max-w-4xl text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg'>
                   <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     Curious
                   </span>
