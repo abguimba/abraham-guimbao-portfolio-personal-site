@@ -186,11 +186,11 @@ function MeteorRain({ isDark }: { isDark: boolean }) {
 
 function SkillsList() {
   return (
-    <div className='mx-auto flex max-w-3xl flex-wrap justify-center gap-2 px-4 sm:gap-3'>
+    <div className='mx-auto flex max-w-3xl flex-wrap justify-center gap-1.5 px-4 sm:gap-3'>
       {skills.map((skill) => (
         <span
           key={skill}
-          className='inline-block cursor-default whitespace-nowrap rounded-full border border-yellow-600/40 bg-yellow-600/20 px-3 py-1.5 text-sm font-medium text-yellow-800 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md dark:border-purple-500/30 dark:bg-purple-500/10 dark:text-purple-300 sm:px-4 sm:py-2 sm:text-base'
+          className='inline-block cursor-default whitespace-nowrap rounded-full border border-yellow-600/40 bg-yellow-600/20 px-2 py-1 text-xs font-medium text-yellow-800 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md dark:border-purple-500/30 dark:bg-purple-500/10 dark:text-purple-300 sm:px-4 sm:py-2 sm:text-base'
         >
           {skill}
         </span>
@@ -341,7 +341,7 @@ export default function Home() {
       <main className='relative z-10 flex-1'>
         <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
         {/* Hero Section */}
-        <section className='relative flex min-h-[calc(100vh-8rem)] items-center overflow-hidden'>
+        <section className='relative flex min-h-[calc(100vh-12rem)] items-center overflow-hidden sm:min-h-[calc(100vh-8rem)]'>
           <div className='absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent dark:from-purple-500/5' />
           <div className='relative mx-auto w-full max-w-4xl px-4 py-6 sm:px-6 sm:py-8'>
             <div className='fade-in text-center'>
@@ -393,8 +393,7 @@ export default function Home() {
                   </div>
                   <div className='flex items-center gap-1.5 rounded-full border border-orange-600/40 bg-orange-600/20 px-2.5 py-1 text-xs font-medium text-orange-600 shadow-sm dark:border-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400 sm:gap-2 sm:px-3 sm:py-1.5'>
                     <Briefcase className='h-2.5 w-2.5 sm:h-3 sm:w-3' />
-                    <span className='hidden sm:inline'>Freelance - B2B</span>
-                    <span className='sm:hidden'>B2B</span>
+                    <span>Freelance - B2B</span>
                   </div>
                   <div className='flex items-center gap-1.5 rounded-full border border-gray-400/50 bg-gray-200/60 px-2.5 py-1 text-xs font-medium text-gray-700 shadow-sm dark:border-gray-400/30 dark:bg-gray-200/20 dark:text-gray-300 sm:gap-2 sm:px-3 sm:py-1.5'>
                     <span>🇺🇸 🇪🇸 🇫🇷</span>
@@ -408,7 +407,7 @@ export default function Home() {
 
               <SingleRoleDisplay />
 
-              <div className='mb-6 flex justify-center px-2 sm:mb-8 sm:px-0'>
+              <div className='mb-8 flex justify-center px-2 sm:mb-8 sm:px-0'>
                 <p className='max-w-2xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg'>
                   <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     Curious
@@ -440,7 +439,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className='sm:mb-10'>
+              <div className='mb-8 sm:mb-10'>
                 <div className='text-center'>
                   <span className='text-sm font-medium'>
                     <a
