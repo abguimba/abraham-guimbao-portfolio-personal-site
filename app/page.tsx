@@ -12,6 +12,7 @@ import {
   Moon,
   Calendar,
   Briefcase,
+  X,
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
@@ -34,8 +35,9 @@ const socialLinks = [
   },
   {
     name: 'Schedule Meeting',
-    href: '/booking',
+    href: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ14mGOqXTtYVDzQ6r4tco-wtsowz-4rPJMTnFneYtdHjXoRmQhGRo0XJjInnFjGRi8VFOAhJxjO?gv=true',
     icon: Calendar,
+    isPopup: true,
   },
   {
     name: 'Email',
@@ -87,7 +89,7 @@ function ThemeToggle({
     <button
       type='button'
       onClick={onToggle}
-      className='fixed right-4 top-4 z-[9999] flex h-10 w-10 items-center justify-center rounded-lg border border-yellow-600/40 bg-card shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl dark:border-purple-400/40 sm:right-6 sm:top-6 sm:h-12 sm:w-12'
+      className='fixed right-4 top-4 z-[9999] flex h-10 w-10 items-center justify-center rounded-lg border border-yellow-600/40 bg-card shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl dark:border-blue-400/40 sm:right-6 sm:top-6 sm:h-12 sm:w-12'
       aria-label='Toggle theme'
     >
       <div className='relative h-5 w-5 sm:h-6 sm:w-6'>
@@ -99,7 +101,7 @@ function ThemeToggle({
           }`}
         />
         <Moon
-          className={`absolute inset-0 h-5 w-5 text-purple-400 transition-all duration-300 sm:h-6 sm:w-6 ${
+          className={`absolute inset-0 h-5 w-5 text-blue-400 transition-all duration-300 sm:h-6 sm:w-6 ${
             isDark
               ? 'rotate-0 scale-100 opacity-100'
               : '-rotate-90 scale-0 opacity-0'
@@ -126,15 +128,15 @@ function MeteorRain({ isDark }: { isDark: boolean }) {
     const checkMobile = () => window.innerWidth < 640;
     setIsMobile(checkMobile());
 
-    // Generate meteors - reduce count on mobile for better performance
+    // Generate meteors - reduce count
     const meteorArray = [];
-    const meteorCount = checkMobile() ? 4 : 8; // Fewer meteors on mobile
+    const meteorCount = checkMobile() ? 2 : 3; // Much fewer meteors overall
     for (let i = 1; i <= meteorCount; i++) {
       meteorArray.push({
         id: i,
         left: Math.random() * 90 + 9,
         top: Math.random() * 250 + 50,
-        duration: Math.random() * 8 + 4, // 4-12s
+        duration: Math.random() * 6 + 6, // 6-12s (slower meteors)
       });
     }
     setMeteors(meteorArray);
@@ -149,33 +151,33 @@ function MeteorRain({ isDark }: { isDark: boolean }) {
     };
   }, [isDark]);
 
-  // Use proper highlight colors: yellow for light, purple for dark
-  const meteorColor = isDark ? '#a855f7' : '#fbbf24';
-  const meteorGlow = isDark ? '#a855f7' : '#fbbf24';
+  // Use proper highlight colors: yellow for light, blue for dark
+  const meteorColor = isDark ? '#1e90ff' : '#fbbf24';
+  const meteorGlow = isDark ? '#1e90ff' : '#fbbf24';
 
   return (
-    <div className='pointer-events-none fixed inset-0 z-0 overflow-hidden'>
+    <div className='pointer-events-none fixed inset-0 z-0 overflow-hidden bg-transparent'>
       {/* Meteors */}
       {meteors.map((meteor) => (
         <div
           key={meteor.id}
-          className='absolute opacity-60 sm:opacity-80' // Reduce opacity on mobile for subtlety
+          className='absolute opacity-40 sm:opacity-60' // Further reduced opacity for subtlety
           style={{
             top: `${meteor.top}px`,
             left: `${meteor.left}%`,
-            width: isMobile ? '150px' : '200px', // Shorter meteors on mobile
-            height: '3px',
+            width: isMobile ? '120px' : '160px', // Shorter meteors for subtlety
+            height: '2px', // Thinner meteors
             transform: 'rotate(-45deg)',
             backgroundImage: `linear-gradient(to right, ${meteorColor}, transparent)`,
             animation: `meteor ${meteor.duration}s linear infinite`,
-            filter: `drop-shadow(0 0 ${isMobile ? '4px' : '6px'} ${meteorGlow})`, // Smaller glow on mobile
+            filter: `drop-shadow(0 0 ${isMobile ? '3px' : '4px'} ${meteorGlow})`, // Smaller glow
           }}
         >
           <div
-            className='absolute -mt-0.5 h-1.5 w-1.5 rounded-full sm:h-2 sm:w-2'
+            className='absolute -mt-0.5 h-1 w-1 rounded-full sm:h-1.5 sm:w-1.5' // Smaller meteor head
             style={{
               background: meteorColor,
-              boxShadow: `0 0 ${isMobile ? '6px 1px' : '10px 2px'} ${meteorGlow}`,
+              boxShadow: `0 0 ${isMobile ? '4px 1px' : '6px 1px'} ${meteorGlow}`,
             }}
           />
         </div>
@@ -186,11 +188,11 @@ function MeteorRain({ isDark }: { isDark: boolean }) {
 
 function SkillsList() {
   return (
-    <div className='mx-auto flex max-w-3xl flex-wrap justify-center gap-1.5 px-4 sm:gap-3'>
+    <div className='mx-auto flex max-w-7xl flex-wrap justify-center gap-1.5 px-4 sm:gap-3'>
       {skills.map((skill) => (
         <span
           key={skill}
-          className='inline-block cursor-default whitespace-nowrap rounded-full border border-yellow-600/40 bg-yellow-600/20 px-2 py-1 text-xs font-medium text-yellow-800 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md dark:border-purple-500/30 dark:bg-purple-500/10 dark:text-purple-300 sm:px-4 sm:py-2 sm:text-base'
+          className='inline-block cursor-default whitespace-nowrap rounded-full border border-yellow-600/40 bg-yellow-600/20 px-2 py-1 text-xs font-medium text-yellow-800 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-300 sm:px-3 sm:py-1.5 sm:text-sm'
         >
           {skill}
         </span>
@@ -215,7 +217,7 @@ function SingleRoleDisplay() {
       timeoutsRef.current = [];
     };
 
-    intervalRef.current = setInterval(() => {
+    const startAnimationCycle = () => {
       // Clear any existing timeouts before creating new ones
       clearAllTimeouts();
 
@@ -252,9 +254,21 @@ function SingleRoleDisplay() {
         timeoutsRef.current.push(timeout2);
       }, 500);
       timeoutsRef.current.push(timeout1);
-    }, 2500); // Faster overall cycle
+    };
+
+    // Start the first animation cycle immediately after initial mount delay
+    const initialTimeout = setTimeout(() => {
+      startAnimationCycle();
+    }, 1000); // Wait 1 second after mount before first animation
+
+    // Start regular interval that will trigger the second animation at the right time
+    // This ensures consistent timing between all cycles
+    intervalRef.current = setInterval(() => {
+      startAnimationCycle();
+    }, 2500);
 
     return () => {
+      clearTimeout(initialTimeout);
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
@@ -268,13 +282,13 @@ function SingleRoleDisplay() {
     : '';
 
   return (
-    <div className='mb-6 text-xl sm:mb-8 sm:text-xl md:text-2xl lg:text-3xl'>
+    <div className='mb-6 text-3xl sm:mb-8 sm:text-2xl md:text-3xl lg:text-4xl'>
       <div className='text-center'>
         <div className='relative inline-flex items-center'>
           {/* Role name container - responsive width */}
           <div className='relative flex h-[1.4em] w-[12ch] items-center justify-end overflow-hidden sm:w-[12ch]'>
             <div
-              className={`whitespace-nowrap font-medium text-yellow-600 dark:text-purple-400 ${animationClass}`}
+              className={`whitespace-nowrap font-medium text-yellow-600 dark:text-blue-400 ${animationClass}`}
             >
               {roleSpecialization}
             </div>
@@ -283,7 +297,7 @@ function SingleRoleDisplay() {
           <span className='ml-1 font-medium text-muted-foreground sm:ml-2'>
             Engineer
             <span
-              className={`animate-cursor-flicker text-yellow-600 transition-opacity dark:text-purple-400 ${cursorVisible ? 'opacity-100 duration-200' : 'opacity-0 duration-1000'}`}
+              className={`animate-cursor-flicker text-yellow-600 transition-opacity dark:text-blue-400 ${cursorVisible ? 'opacity-100 duration-200' : 'opacity-0 duration-1000'}`}
             >
               _&nbsp;&nbsp;&nbsp;
             </span>
@@ -297,6 +311,7 @@ function SingleRoleDisplay() {
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showCalendarModal, setShowCalendarModal] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -324,30 +339,25 @@ export default function Home() {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <div
-        className='flex min-h-screen flex-col'
-        style={{ backgroundColor: '#ffffff' }}
-      >
+      <div className='flex min-h-screen flex-col bg-background text-foreground'>
         <div className='flex flex-1 items-center justify-center'>
-          <div className='h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900'></div>
+          <div className='h-8 w-8 animate-spin rounded-full border-b-2 border-foreground'></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className='flex min-h-screen flex-col bg-background text-foreground'>
+    <div className='relative flex min-h-screen w-full flex-col bg-background text-foreground'>
       <MeteorRain isDark={isDark} />
-      {/* Made with AI Badge - Top of site */}
-      <header className='bg-background py-2 sm:py-2'>
-        <div className='flex justify-center px-4'>
-          <div className='flex items-center gap-1 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 shadow-sm dark:border-blue-400/30 dark:bg-blue-400/10 dark:text-blue-400'>
-            <span className='text-xs'>🤖</span>
-            Made with AI
-          </div>
+      {/* Made with AI Badge - Floating instead of in header */}
+      <div className='fixed left-1/2 top-4 z-20 -translate-x-1/2 transform'>
+        <div className='flex items-center gap-1 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 shadow-sm dark:border-blue-400/30 dark:bg-blue-400/10 dark:text-blue-400'>
+          <span className='text-xs'>🤖</span>
+          Made with AI
         </div>
-      </header>
-      <main className='relative z-10 flex-1'>
+      </div>
+      <main className='relative z-10 w-full flex-1'>
         <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
         {/* Hero Section */}
         <section className='relative flex min-h-[calc(100vh-12rem)] items-center overflow-hidden sm:min-h-[calc(100vh-8rem)]'>
@@ -365,11 +375,27 @@ export default function Home() {
                         <Link
                           key={link.name}
                           href={link.href}
-                          className='flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
+                          className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
                           title={link.name}
                         >
-                          <Icon className='h-4 w-4 text-yellow-600 dark:text-purple-400 sm:h-5 sm:w-5' />
+                          <Icon className='h-4 w-4 text-yellow-600 dark:text-blue-400 sm:h-5 sm:w-5' />
                         </Link>
+                      );
+                    }
+
+                    if (link.isPopup) {
+                      return (
+                        <button
+                          type='button'
+                          key={link.name}
+                          onClick={() => {
+                            setShowCalendarModal(true);
+                          }}
+                          className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
+                          title={link.name}
+                        >
+                          <Icon className='h-4 w-4 text-yellow-600 dark:text-blue-400 sm:h-5 sm:w-5' />
+                        </button>
                       );
                     }
 
@@ -379,10 +405,10 @@ export default function Home() {
                         href={link.href}
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
+                        className='social-badge-mobile flex h-8 w-8 items-center justify-center rounded bg-card transition-all hover:scale-105 hover:bg-accent sm:h-10 sm:w-10'
                         title={link.name}
                       >
-                        <Icon className='h-4 w-4 text-yellow-600 dark:text-purple-400 sm:h-5 sm:w-5' />
+                        <Icon className='h-4 w-4 text-yellow-600 dark:text-blue-400 sm:h-5 sm:w-5' />
                       </a>
                     );
                   })}
@@ -391,26 +417,26 @@ export default function Home() {
 
               <div className='mb-6 flex flex-col gap-3 sm:mb-8'>
                 <div className='flex flex-wrap items-center justify-center gap-2 sm:gap-3'>
-                  <div className='flex items-center gap-1.5 rounded-full border border-green-600/40 bg-green-600/20 px-2.5 py-1 text-xs font-medium text-green-600 shadow-sm dark:border-green-500/30 dark:bg-green-500/10 dark:text-green-400 sm:gap-2 sm:px-3 sm:py-1.5'>
+                  <div className='badge-mobile-small flex items-center gap-1.5 rounded-full border border-green-600/40 bg-green-600/20 px-2.5 py-1 text-xs font-medium text-green-600 shadow-sm dark:border-green-500/30 dark:bg-green-500/10 dark:text-green-400 sm:gap-2 sm:px-3 sm:py-1.5'>
                     <Check className='h-2.5 w-2.5 sm:h-3 sm:w-3' />
                     <span className='hidden xs:inline'>Open To Work</span>
                     <span className='xs:hidden'>Available</span>
                   </div>
-                  <div className='flex items-center gap-1.5 rounded-full border border-blue-600/40 bg-blue-600/20 px-2.5 py-1 text-xs font-medium text-blue-600 shadow-sm dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-400 sm:gap-2 sm:px-3 sm:py-1.5'>
+                  <div className='badge-mobile-small flex items-center gap-1.5 rounded-full border border-blue-600/40 bg-blue-600/20 px-2.5 py-1 text-xs font-medium text-blue-600 shadow-sm dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-400 sm:gap-2 sm:px-3 sm:py-1.5'>
                     <MapPin className='h-2.5 w-2.5 sm:h-3 sm:w-3' />
                     Remote
                   </div>
-                  <div className='flex items-center gap-1.5 rounded-full border border-orange-600/40 bg-orange-600/20 px-2.5 py-1 text-xs font-medium text-orange-600 shadow-sm dark:border-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400 sm:gap-2 sm:px-3 sm:py-1.5'>
+                  <div className='badge-mobile-small flex items-center gap-1.5 rounded-full border border-orange-600/40 bg-orange-600/20 px-2.5 py-1 text-xs font-medium text-orange-600 shadow-sm dark:border-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400 sm:gap-2 sm:px-3 sm:py-1.5'>
                     <Briefcase className='h-2.5 w-2.5 sm:h-3 sm:w-3' />
                     <span>Freelance - B2B</span>
                   </div>
-                  <div className='flex items-center gap-1.5 rounded-full border border-gray-400/50 bg-gray-200/60 px-2.5 py-1 text-xs font-medium text-gray-700 shadow-sm dark:border-gray-400/30 dark:bg-gray-200/20 dark:text-gray-300 sm:gap-2 sm:px-3 sm:py-1.5'>
+                  <div className='badge-mobile-small flex items-center gap-1.5 rounded-full border border-gray-400/50 bg-gray-200/60 px-2.5 py-1 text-xs font-medium text-gray-700 shadow-sm dark:border-gray-400/30 dark:bg-gray-200/20 dark:text-gray-300 sm:gap-2 sm:px-3 sm:py-1.5'>
                     <span>🇺🇸 🇪🇸 🇫🇷</span>
                   </div>
                 </div>
               </div>
 
-              <h1 className='mb-4 text-4xl font-bold tracking-normal sm:mb-6 sm:text-5xl sm:tracking-tight md:text-6xl lg:text-7xl'>
+              <h1 className='cinematic-glow mb-4 text-5xl font-bold tracking-normal sm:mb-6 sm:text-5xl sm:tracking-tight md:text-6xl lg:text-7xl'>
                 Abraham <span className='text-gradient'>Guimbao</span>
               </h1>
 
@@ -418,30 +444,30 @@ export default function Home() {
 
               <div className='mb-8 flex justify-center px-2 sm:mb-8 sm:px-0'>
                 <p className='max-w-2xl text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg'>
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
+                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
                     Curious
                   </span>
                   ,{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
+                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
                     hard-working
                   </span>
                   , and{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
+                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
                     proactive
                   </span>{' '}
                   individual with a diverse skill set.
                   <br className='hidden sm:block' />
                   <span className='sm:hidden'> </span>Passionate about building
                   robust{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
+                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
                     infrastructures
                   </span>
                   ,{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
+                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
                     automations
                   </span>{' '}
                   and{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
+                  <span className='font-medium text-yellow-600 dark:text-blue-400'>
                     complex systems
                   </span>
                   .
@@ -471,6 +497,37 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Calendar Modal */}
+      {showCalendarModal && (
+        <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4'>
+          <div className='relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-lg border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900'>
+            <div className='flex items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800'>
+              <h2 className='text-lg font-semibold text-gray-900 dark:text-white'>
+                Schedule a Meeting
+              </h2>
+              <button
+                type='button'
+                onClick={() => {
+                  setShowCalendarModal(false);
+                }}
+                className='flex h-8 w-8 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700'
+                aria-label='Close modal'
+              >
+                <X className='h-4 w-4' />
+              </button>
+            </div>
+            <div className='h-[600px] bg-white'>
+              <iframe
+                src='https://calendar.google.com/calendar/appointments/schedules/AcZssZ14mGOqXTtYVDzQ6r4tco-wtsowz-4rPJMTnFneYtdHjXoRmQhGRo0XJjInnFjGRi8VFOAhJxjO?gv=true'
+                className='h-full w-full border-0'
+                title='Schedule Meeting'
+                sandbox='allow-scripts allow-forms allow-popups'
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
