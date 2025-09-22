@@ -152,8 +152,8 @@ function MeteorRain({ isDark }: { isDark: boolean }) {
   }, [isDark]);
 
   // Use proper highlight colors: yellow for light, purple for dark
-  const meteorColor = isDark ? '#c084fc' : '#fbbf24';
-  const meteorGlow = isDark ? '#c084fc' : '#fbbf24';
+  const meteorColor = isDark ? '#c084fc' : '#eab308';
+  const meteorGlow = isDark ? '#c084fc' : '#eab308';
 
   return (
     <div className='pointer-events-none fixed inset-0 z-0 overflow-hidden bg-transparent'>
@@ -205,7 +205,7 @@ function SingleRoleDisplay() {
   const currentRoleIndexRef = useRef(0);
   const [displayRoleIndex, setDisplayRoleIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState('');
-  const [cursorVisible, setCursorVisible] = useState(true);
+  const [_cursorVisible, setCursorVisible] = useState(true);
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -296,12 +296,7 @@ function SingleRoleDisplay() {
           </div>
           {/* Fixed "Engineer" position - completely static and separate */}
           <span className='ml-1 font-medium text-muted-foreground sm:ml-2'>
-            Engineer
-            <span
-              className={`animate-cursor-flicker text-yellow-600 transition-opacity dark:text-purple-400 ${cursorVisible ? 'opacity-100 duration-200' : 'opacity-0 duration-1000'}`}
-            >
-              _&nbsp;&nbsp;&nbsp;
-            </span>
+            Engineer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </div>
       </div>
@@ -313,6 +308,7 @@ export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [showCalendarModal, setShowCalendarModal] = useState(false);
+  const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -327,6 +323,17 @@ export default function Home() {
     document.documentElement.style.colorScheme = shouldBeDark
       ? 'dark'
       : 'light';
+  }, []);
+
+  useEffect(() => {
+    // Simple cursor blinking effect
+    const interval = setInterval(() => {
+      setCursorVisible((prev) => !prev);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -438,7 +445,12 @@ export default function Home() {
               </div>
 
               <h1 className='cinematic-glow mb-4 text-5xl font-bold tracking-normal sm:mb-6 sm:text-5xl sm:tracking-tight md:text-6xl lg:text-7xl'>
-                Abraham <span className='text-gradient'>Guimbao</span>
+                &nbsp;Abraham <span className='text-gradient'>Guimbao</span>
+                <span
+                  className={`inline-block -translate-y-2 animate-cursor-flicker align-baseline text-yellow-600 transition-opacity dark:text-purple-400 ${cursorVisible ? 'opacity-100 duration-200' : 'opacity-0 duration-1000'}`}
+                >
+                  _
+                </span>
               </h1>
 
               <SingleRoleDisplay />
@@ -476,6 +488,10 @@ export default function Home() {
               </div>
 
               <div className='mb-8 sm:mb-10'>
+                <SkillsList />
+              </div>
+
+              <div className='mb-0'>
                 <div className='text-center'>
                   <span className='text-sm font-medium tracking-normal'>
                     <a
@@ -489,10 +505,6 @@ export default function Home() {
                     Graduate
                   </span>
                 </div>
-              </div>
-
-              <div className='mb-0'>
-                <SkillsList />
               </div>
             </div>
           </div>
