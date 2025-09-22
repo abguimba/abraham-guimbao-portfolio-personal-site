@@ -401,14 +401,14 @@ export default function Home() {
                 </div>
               </div>
 
-              <h1 className='mb-4 text-3xl font-bold tracking-tight sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl'>
+              <h1 className='mb-4 text-3xl font-bold tracking-normal sm:mb-6 sm:text-5xl sm:tracking-tight md:text-6xl lg:text-7xl'>
                 Abraham <span className='text-gradient'>Guimbao</span>
               </h1>
 
               <SingleRoleDisplay />
 
               <div className='mb-8 flex justify-center px-2 sm:mb-8 sm:px-0'>
-                <p className='max-w-2xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg'>
+                <p className='max-w-2xl text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg'>
                   <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     Curious
                   </span>
@@ -441,7 +441,7 @@ export default function Home() {
 
               <div className='mb-8 sm:mb-10'>
                 <div className='text-center'>
-                  <span className='text-sm font-medium'>
+                  <span className='text-sm font-medium tracking-normal'>
                     <a
                       href='https://42.fr'
                       target='_blank'
