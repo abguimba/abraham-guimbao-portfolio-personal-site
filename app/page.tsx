@@ -268,11 +268,11 @@ function SingleRoleDisplay() {
     : '';
 
   return (
-    <div className='mb-6 text-lg sm:mb-8 sm:text-xl md:text-2xl lg:text-3xl'>
+    <div className='mb-6 text-xl sm:mb-8 sm:text-xl md:text-2xl lg:text-3xl'>
       <div className='text-center'>
         <div className='relative inline-flex items-center'>
           {/* Role name container - responsive width */}
-          <div className='relative flex h-[1.4em] w-[10ch] items-center justify-end overflow-hidden sm:w-[12ch]'>
+          <div className='relative flex h-[1.4em] w-[12ch] items-center justify-end overflow-hidden sm:w-[12ch]'>
             <div
               className={`whitespace-nowrap font-medium text-yellow-600 dark:text-purple-400 ${animationClass}`}
             >
@@ -401,7 +401,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <h1 className='mb-4 text-3xl font-bold tracking-normal sm:mb-6 sm:text-5xl sm:tracking-tight md:text-6xl lg:text-7xl'>
+              <h1 className='mb-4 text-4xl font-bold tracking-normal sm:mb-6 sm:text-5xl sm:tracking-tight md:text-6xl lg:text-7xl'>
                 Abraham <span className='text-gradient'>Guimbao</span>
               </h1>
 
