@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "echo \"Applying static Engineer layout adjustment\"",
+      "label": "echo",
+      "group": "build",
+      "isBackground": false
+    }
+  ]
+}

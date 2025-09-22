@@ -1,0 +1,51 @@
+{
+  "[css][graphql][html][javascript][javascriptreact][json][jsonc][markdown][mdx][scss][typescript][typescriptreact][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [],
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "node_modules/@mantine/core/styles.css"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "editor.tabSize": 2,
+  "files.associations": {
+    "**/*.json": "jsonc",
+    "**/package.json": "json",
+    "*.css": "tailwindcss"
+  },
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "rust-analyzer.check.command": "clippy",
+  "search.exclude": {
+    "**/*.code-search": true,
+    "**/_next": true,
+    "**/bower_components": true,
+    "**/node_modules": true,
+    "**/.*": true,
+    ".github": false,
+    "**/*.tsbuildinfo": true
+  },
+  "turbo.path": "node_modules/turbo/bin/turbo",
+  "turbo.useLocalTurbo": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "docker.docker"
+  },
+  "cSpell.enabledFileTypes": {
+    "Dockerfile": true
+  },
+  "tailwindCSS.experimental.classRegex": [
+    // ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}

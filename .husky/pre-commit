@@ -1,0 +1,2 @@
+# shellcheck shell=sh
+exec bun lint-staged --concurrent false
