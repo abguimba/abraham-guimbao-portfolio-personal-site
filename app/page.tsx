@@ -59,6 +59,7 @@ const roles = [
   'Cloud Engineer',
   'Automation Engineer',
   'AI Engineer',
+  'Web3 Engineer',
 ];
 
 const skills = [
