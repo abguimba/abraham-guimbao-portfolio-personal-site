@@ -53,12 +53,15 @@
   * {
     @apply border-border;
     font-family:
-      'Noto Sans',
-      'Noto Sans Arabic UI',
+      'Geist Sans',
+      'Inter',
       system-ui,
       -apple-system,
+      'Segoe UI',
+      'Helvetica Neue',
       sans-serif;
     font-variant-numeric: lining-nums;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
   /* Ensure no margins/padding on body and html */
@@ -75,12 +78,18 @@
     @apply bg-background text-foreground;
     font-feature-settings:
       'rlig' 1,
-      'calt' 1;
+      'calt' 1,
+      'cv02' 1,
+      'cv03' 1,
+      'cv04' 1,
+      'cv11' 1;
     font-family:
-      'Noto Sans',
-      'Noto Sans Arabic UI',
+      'Geist Sans',
+      'Inter',
       system-ui,
       -apple-system,
+      'Segoe UI',
+      'Helvetica Neue',
       sans-serif;
     font-variant-numeric: lining-nums;
     height: 100%;

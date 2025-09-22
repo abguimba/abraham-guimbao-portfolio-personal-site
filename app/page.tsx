@@ -30,7 +30,7 @@ const socialLinks = [
   },
   {
     name: 'Resume',
-    href: 'https://rxresu.me/abrahamguimbao/abraham-guimbao',
+    href: 'https://storage.rxresu.me/clpopswdi025g84ec1rapzplq/resumes/abraham-guimbao.pdf',
     icon: FileText,
   },
   {
@@ -58,24 +58,29 @@ const roles = [
   'Back-end Engineer',
   'Network Engineer',
   'DevOps Engineer',
+  'DevSecOps Engineer',
+  'LLMOps Engineer',
+  'Systems Engineer',
   'Cloud Engineer',
   'Automation Engineer',
   'AI Engineer',
   'Web3 Engineer',
+  'GameDev Engineer',
 ];
 
 const skills = [
   'Infrastructure',
-  'Cloud',
-  'Systems',
   'Back-end',
-  'Automation',
   'Networking',
-  'Web3',
-  'Cybersecurity',
+  'DevOps',
+  'Systems',
+  'Cloud',
+  'Automation',
   'AI',
-  'OSS',
+  'Web3',
   'GameDev',
+  'Cybersecurity',
+  'OSS',
 ];
 
 function ThemeToggle({
@@ -312,6 +317,8 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+
+    // Immediately check and apply theme to prevent flash
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia(
       '(prefers-color-scheme: dark)',
@@ -439,7 +446,7 @@ export default function Home() {
                     <span>Freelance - B2B</span>
                   </div>
                   <div className='badge-mobile-small flex items-center gap-1.5 rounded-full border border-gray-400/50 bg-gray-200/60 px-2.5 py-1 text-xs font-medium text-gray-700 shadow-sm dark:border-gray-400/30 dark:bg-gray-200/20 dark:text-gray-300 sm:gap-2 sm:px-3 sm:py-1.5'>
-                    <span>🇺🇸 🇪🇸 🇫🇷</span>
+                    <span>🇬🇧 🇪🇸 🇫🇷</span>
                   </div>
                 </div>
               </div>
@@ -455,7 +462,7 @@ export default function Home() {
 
               <SingleRoleDisplay />
 
-              <div className='mb-8 flex justify-center px-2 sm:mb-8 sm:px-0'>
+              <div className='mb-2 flex justify-center px-2 sm:mb-4 sm:px-0'>
                 <p className='max-w-4xl text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg'>
                   <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     Curious
@@ -464,30 +471,22 @@ export default function Home() {
                   <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     hard-working
                   </span>
+                  ,{' '}
+                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
+                    passionate
+                  </span>
                   , and{' '}
                   <span className='font-medium text-yellow-600 dark:text-purple-400'>
                     proactive
                   </span>{' '}
-                  individual with a diverse skill set.
+                  <span className='underline'>technology enthusiast</span> with
+                  a diverse skill set.
                   <br className='hidden sm:block' />
-                  <span className='sm:hidden'> </span>Passionate about building
-                  robust{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
-                    infrastructures
-                  </span>
-                  ,{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
-                    automations
-                  </span>{' '}
-                  and{' '}
-                  <span className='font-medium text-yellow-600 dark:text-purple-400'>
-                    complex systems
-                  </span>
-                  .
+                  <br />
                 </p>
               </div>
 
-              <div className='mb-8 sm:mb-10'>
+              <div className='mb-4 sm:mb-6'>
                 <SkillsList />
               </div>
 
@@ -535,7 +534,7 @@ export default function Home() {
                 src='https://calendar.google.com/calendar/appointments/schedules/AcZssZ14mGOqXTtYVDzQ6r4tco-wtsowz-4rPJMTnFneYtdHjXoRmQhGRo0XJjInnFjGRi8VFOAhJxjO?gv=true'
                 className='h-full w-full border-0'
                 title='Schedule Meeting'
-                sandbox='allow-scripts allow-forms allow-popups'
+                sandbox='allow-scripts allow-forms allow-popups allow-same-origin' // eslint-disable-line @eslint-react/dom/no-unsafe-iframe-sandbox
               />
             </div>
           </div>

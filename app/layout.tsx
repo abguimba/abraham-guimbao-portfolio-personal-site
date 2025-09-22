@@ -1,6 +1,15 @@
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
+import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Abraham Guimbao',
@@ -35,34 +44,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <head>
-        <script
-          /* eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml */
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const savedTheme = localStorage.getItem('theme');
-                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-                  
-                  const html = document.documentElement;
-                  if (shouldBeDark) {
-                    html.classList.add('dark');
-                    html.style.colorScheme = 'dark';
-                  } else {
-                    html.classList.remove('dark');
-                    html.style.colorScheme = 'light';
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className={`${GeistSans.className} bg-background text-foreground`}>
+    <html lang='en' suppressHydrationWarning>
+      <body
+        className={`${GeistSans.className} ${inter.variable} bg-background text-foreground`}
+      >
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -90,9 +90,9 @@ export default {
             transform: 'translateX(100%)',
             opacity: '0',
           },
-          '60%': {
+          '80%': {
             transform: 'translateX(0)',
-            opacity: '0.8',
+            opacity: '0.9',
           },
           '100%': {
             transform: 'translateX(0)',
