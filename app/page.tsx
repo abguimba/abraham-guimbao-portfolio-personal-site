@@ -288,7 +288,7 @@ function SingleRoleDisplay() {
     : '';
 
   return (
-    <div className='mb-6 text-3xl sm:mb-8 sm:text-2xl md:text-3xl lg:text-4xl'>
+    <div className='mb-6 text-4xl sm:mb-8 sm:text-3xl md:text-4xl lg:text-5xl'>
       <div className='text-center'>
         <div className='relative inline-flex items-center'>
           {/* Role name container - responsive width */}
@@ -301,7 +301,7 @@ function SingleRoleDisplay() {
           </div>
           {/* Fixed "Engineer" position - completely static and separate */}
           <span className='ml-1 font-medium text-muted-foreground sm:ml-2'>
-            Engineer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Engineer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </div>
       </div>
